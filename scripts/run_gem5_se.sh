@@ -29,23 +29,25 @@ L2_SIZE=256kB
 L2_ASSOC=8
 CACHELINE_SIZE=64
 
-MEM_SIZE=$((2*NUM_CPUS))GB
+# MEM_SIZE=$((2*NUM_CPUS))GB
+CONFIG_TOTAL_SIZE=$((CONFIG_DRAM_SIZE + CONFIG_PM_SIZE))
 MEM_TYPE=SimpleMemory
+
 
 ##################################################################
 # EXECUTION
 ##################################################################
 
 cd $CONFIG_DIR_GEM5
-for binary in binaries/*; do
+for binary in $CONFIG_DIR_SE_BINARIES/*; do
     if [[ $binary == *.out ]]; then
-      ./build/X86/gem5.opt \
-      ../gem5-repo/configs/example/se.py \
+      $CONFIG_DIR_GEM5/build/X86/gem5.opt \
+      $CONFIG_DIR_GEM5/configs/example/se.py \
         --cpu-type=$CPU_TYPE --cpu-clock=$CPU_CLK \
         --caches --cacheline_size=$CACHELINE_SIZE \
         --l1i_size=$L1I_SIZE --l1i_assoc=$L1I_ASSOC --l1d_size=$L1D_SIZE --l1d_assoc=$L1D_ASSOC \
         --l2cache --l2_size=$L2_SIZE --l2_assoc=$L2_ASSOC \
-        --mem-type=$MEM_TYPE --mem-size=$MEM_SIZE \
+        --mem-type=$MEM_TYPE --mem-size=${CONFIG_TOTAL_SIZE}GB \
         -c $binary
         # --l3cache --l3_size=$L3_SIZE --l3_assoc=$L3_ASSOC
   fi

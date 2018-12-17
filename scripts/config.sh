@@ -8,6 +8,7 @@ else
   exit;
 fi
 
+# SRC
 # =================================================================
 
 # to specify which kernel to download
@@ -38,6 +39,7 @@ CONFIG_OS_SRC="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/16.04.5/ubun
 CONFIG_GEM5_SRC="https://github.com/gem5/gem5"
 CONFIG_GEM5_VERSION="c428c220fd351626e2ee0005dda696940261793b"
 
+# DIR
 # =================================================================
 
 CONFIG_ROOT_DIR=$PWD/..
@@ -56,6 +58,12 @@ CONFIG_DIR_DISKS=$CONFIG_DIR_DEP/disks
 
 export M5_PATH=$CONFIG_DIR_DEP
 
+# Hybrid Memory
+# =================================================================\
+CONFIG_DRAM_SIZE=4 # in GiB
+CONFIG_PM_SIZE=4 # in GiB
+
+# OUTPUT
 # =================================================================
 
 COLOR_RED='\033[0;31m'
