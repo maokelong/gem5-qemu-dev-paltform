@@ -47,7 +47,10 @@ for binary in $CONFIG_DIR_SE_BINARIES/*; do
         --caches --cacheline_size=$CACHELINE_SIZE \
         --l1i_size=$L1I_SIZE --l1i_assoc=$L1I_ASSOC --l1d_size=$L1D_SIZE --l1d_assoc=$L1D_ASSOC \
         --l2cache --l2_size=$L2_SIZE --l2_assoc=$L2_ASSOC \
-        --mem-type=$MEM_TYPE --mem-size=${CONFIG_TOTAL_SIZE}GB \
+        --dram-size=${CONFIG_DRAM_SIZE}GB \
+        --dram-type=SimpleMemory \
+        --pm-size=${CONFIG_PM_SIZE}GB \
+        --pm-type=SimplePM \
         -c $binary
         # --l3cache --l3_size=$L3_SIZE --l3_assoc=$L3_ASSOC
   fi

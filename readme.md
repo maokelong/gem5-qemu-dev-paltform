@@ -4,6 +4,8 @@
 
 只需要很简单的步骤即可在最短的时间内搭建 GEM5 FS + QEMU 平台，并构建能被二者共用的操作系统（默认 Ubuntu 16.04.5 server）及内核（默认 4.15.18）。
 
+> 注：该分支应与 [gem5-mkl](https://github.com/maokelong/gem5-mkl) 配套使用。
+
 ## 步骤
 
 确保你的系统（Host）是 Ubuntu，最好是 Ubuntu 16.04，如果是，你只需要按照如下步骤操作即可：

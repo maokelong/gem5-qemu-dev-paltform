@@ -36,8 +36,8 @@ CONFIG_OS="ubuntu-16.04.5-server-amd64.iso" # with .iso suffix
 CONFIG_OS_SRC="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/16.04.5/ubuntu-16.04.5-server-amd64.iso" # .iso
 
 # to specify the source and version of gem5
-CONFIG_GEM5_SRC="https://github.com/gem5/gem5"
-CONFIG_GEM5_VERSION="c428c220fd351626e2ee0005dda696940261793b"
+CONFIG_GEM5_SRC="https://github.com/maokelong/gem5-mkl"
+CONFIG_GEM5_VERSION="HEAD"
 
 # DIR
 # =================================================================
