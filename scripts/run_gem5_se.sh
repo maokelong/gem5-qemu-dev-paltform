@@ -2,7 +2,7 @@
 set -e
 source config.sh
 
-if [ ! -f $CONFIG_DIR_GEM5/build/X86/gem5.opt ]; then
+if [ ! -f $CONFIG_GEM5_EXECUTABLE ]; then
   echo -e "${COLOR_RED} Please build gem5 before running! ${COLOR_NORMAL}"
   exit -1
 fi
@@ -41,7 +41,7 @@ MEM_TYPE=SimpleMemory
 cd $CONFIG_DIR_GEM5
 for binary in $CONFIG_DIR_SE_BINARIES/*; do
     if [[ $binary == *.out ]]; then
-      $CONFIG_DIR_GEM5/build/X86/gem5.opt \
+      $CONFIG_GEM5_EXECUTABLE \
       $CONFIG_DIR_GEM5/configs/example/se.py \
         --cpu-type=$CPU_TYPE --cpu-clock=$CPU_CLK \
         --caches --cacheline_size=$CACHELINE_SIZE \

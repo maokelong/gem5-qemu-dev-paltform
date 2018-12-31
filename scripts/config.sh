@@ -58,8 +58,12 @@ CONFIG_DIR_DISKS=$CONFIG_DIR_DEP/disks
 
 export M5_PATH=$CONFIG_DIR_DEP
 
+# RUNTIME
+# =================================================================
+CONFIG_GEM5_EXECUTABLE=$CONFIG_DIR_GEM5/build/X86/gem5.debug
+
 # Hybrid Memory
-# =================================================================\
+# =================================================================
 CONFIG_DRAM_SIZE=4 # in GiB
 CONFIG_PM_SIZE=4 # in GiB
 

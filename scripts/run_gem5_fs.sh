@@ -2,7 +2,7 @@
 set -e
 source config.sh
 
-if [ ! -f $CONFIG_DIR_GEM5/build/X86/gem5.opt ]; then
+if [ ! -f $CONFIG_GEM5_EXECUTABLE ]; then
   echo -e "${COLOR_RED} Please build gem5 before running! ${COLOR_NORMAL}"
   exit -1
 fi
@@ -28,7 +28,7 @@ echo -e "${COLOR_GREEN}Note: Execte 'cd $CONFIG_DIR_GEM5/util/term && sudo ./m5t
 CONFIG_PM_BASE=$((CONFIG_DRAM_SIZE + 1))
 
 cd $CONFIG_DIR_GEM5
-./build/X86/gem5.opt \
+$CONFIG_GEM5_EXECUTABLE \
   configs/example/fs.py \
   --cpu-type TimingSimpleCPU \
   --dram-size=${CONFIG_DRAM_SIZE}GB \
