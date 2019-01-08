@@ -36,8 +36,13 @@ CONFIG_OS="ubuntu-16.04.5-server-amd64.iso" # with .iso suffix
 CONFIG_OS_SRC="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/16.04.5/ubuntu-16.04.5-server-amd64.iso" # .iso
 
 # to specify the source and version of gem5
-CONFIG_GEM5_SRC="https://github.com/gem5/gem5"
-CONFIG_GEM5_VERSION="c428c220fd351626e2ee0005dda696940261793b"
+CONFIG_GEM5_SRC="https://github.com/maokelong/gem5-mkl/"
+CONFIG_GEM5_BRANCH="with-spec"
+CONFIG_GEM5_VERSION="HEAD"
+
+# to specify the name of spec cpu 2006
+CONFIG_SPEC="cpu2006.iso"
+CONFIG_SPEC_PATCH_SRC="https://raw.githubusercontent.com/sjp38/spec_on_ubuntu_xenial/master/for-ubuntu16.04.patch"
 
 # DIR
 # =================================================================
@@ -55,17 +60,36 @@ CONFIG_DIR_KERNEL=$CONFIG_DIR_DEP/kernels
 CONFIG_DIR_BINARIES=$CONFIG_DIR_DEP/binaries
 CONFIG_DIR_OS=$CONFIG_DIR_DEP/oss
 CONFIG_DIR_DISKS=$CONFIG_DIR_DEP/disks
+CONFIG_DIR_SPEC=$CONFIG_DIR_DEP/spec
+
+CONFIG_DIR_OUTPUT=$CONFIG_ROOT_DIR/outputs
+CONFIG_DIR_OUTPUT_SE=$CONFIG_DIR_OUTPUT/se_outputs
+
+CONFIG_DIR_PATCHES=$CONFIG_ROOT_DIR/patches
+CONFIG_DIR_PATCHES_10=$CONFIG_DIR_PATCHES/for-spec-v1.0.patch
+CONFIG_DIR_PATCHES_12=$CONFIG_DIR_PATCHES/for-spec-v1.2.patch
 
 export M5_PATH=$CONFIG_DIR_DEP
 
-# Hybrid Memory
-# =================================================================\
-CONFIG_DRAM_SIZE=4 # in GiB
-CONFIG_PM_SIZE=4 # in GiB
+# Specification of virtual machines 
+# =================================================================
+CONFIG_MEM_TYPE=SimpleMemory
+CONFIG_VM_DRAM_SIZE=4 # in GiB
+CONFIG_VM_PM_SIZE=4 # in GiB
+
+CONFIG_VM_NUM_CPUS=8
+CONFIG_VM_CPU_TYPE=TimingSimpleCPU 
+CONFIG_VM_CPU_CLK=3GHz
+CONFIG_VM_CACHELINE_LEN=64
+CONFIG_VM_L1I_SIZE=32kB
+CONFIG_VM_L1I_ASSOC=8
+CONFIG_VM_L1D_SIZE=32kB
+CONFIG_VM_L1D_ASSOC=8
+CONFIG_VM_L2_SIZE=256kB
+CONFIG_VM_L2_ASSOC=8
 
 # OUTPUT
 # =================================================================
-
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
 COLOR_NORMAL='\033[0m'

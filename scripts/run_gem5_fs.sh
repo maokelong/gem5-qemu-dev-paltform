@@ -25,15 +25,13 @@ fi
 
 echo -e "${COLOR_GREEN}Note: Execte 'cd $CONFIG_DIR_GEM5/util/term && sudo ./m5term 127.0.0.1 3456' to listen to gem5.${COLOR_NORMAL}"
 
-CONFIG_TOTAL_SIZE=$((CONFIG_DRAM_SIZE + CONFIG_PM_SIZE))
-CONFIG_PM_BASE=$((CONFIG_DRAM_SIZE + 1))
-
 cd $CONFIG_DIR_GEM5
 ./build/X86/gem5.opt \
   configs/example/fs.py \
   --cpu-type TimingSimpleCPU \
-  --mem-size=${CONFIG_TOTAL_SIZE}GB \
+  --mem-type=$CONFIG_MEM_TYPE \
+  --mem-size=$((CONFIG_VM_DRAM_SIZE + CONFIG_VM_PM_SIZE))GB \
   --kernel=x86_64-vm$CONFIG_KERNEL \
   --disk-image=${CONFIG_OS/iso/img} \
-  --command-line="earlyprintk=ttyS0 console=ttyS0 lpj=7999923 root=/dev/hda1 memmap=${CONFIG_PM_BASE}G!${CONFIG_PM_SIZE}G" \
+  --command-line="earlyprintk=ttyS0 console=ttyS0 lpj=7999923 root=/dev/hda1 memmap=$((CONFIG_VM_DRAM_SIZE + 1))G!${CONFIG_VM_PM_SIZE}G" \
   # --script="$CONFIG_DIR_FS_SCRIPTS/on-boot-up.sh"
