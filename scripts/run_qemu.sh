@@ -14,8 +14,8 @@ if [ ! -d $CONFIG_DIR_SHARED ]; then
   sudo chown libvirt-qemu $CONFIG_DIR_SHARED
 fi
 
-CONFIG_TOTAL_SIZE=$((CONFIG_DRAM_SIZE + CONFIG_PM_SIZE))
-CONFIG_PM_BASE=$((CONFIG_DRAM_SIZE + 1))
+CONFIG_TOTAL_SIZE=$((CONFIG_VM_DRAM_SIZE + CONFIG_VM_PM_SIZE))
+CONFIG_PM_BASE=$((CONFIG_VM_DRAM_SIZE + 1))
 
 sudo qemu-system-x86_64 \
   -machine type=pc,accel=kvm \
@@ -26,7 +26,7 @@ sudo qemu-system-x86_64 \
   -k en-us \
   -drive file=$CONFIG_DIR_DISKS/${CONFIG_OS/iso/img},format=raw,index=0,if=ide,media=disk \
   -kernel $CONFIG_DIR_BINARIES/x86_64-bzImage-$CONFIG_KERNEL \
-  -append "root=/dev/hda1 memmap=${CONFIG_PM_BASE}G!${CONFIG_PM_SIZE}G"
+  -append "root=/dev/hda1 memmap=${CONFIG_PM_BASE}G!${CONFIG_VM_PM_SIZE}G"
   # 不需要任何参数就能连接网络: https://www.linux-kvm.org/page/Networking。只是无法 PING。
   # 进入 Host 后使用如下指令挂载共享文件系统: `mount -t 9p -o trans=virtio,version=9p2000.L share_dir /share_dir`. 
   # 注意，采用 Jason 的 config 文件之后我无法在编译内核时开启 9p 选项，因此运行编译后的内核后无法采用该种方式共享文件
