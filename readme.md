@@ -36,4 +36,4 @@
 ## 相关
 
 1. 如何使用 Eclipse 调试 GEM5 代码。[传送门](https://blog.csdn.net/maokelong95/article/details/85333905)
-1. GEM5 源码阅读：O3 处理器的访存流程与错误处理。[传送门](https://github.com/maokelong/CSDN-maokelong95/blob/master/GEM5%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%EF%BC%9AO3%20%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E8%AE%BF%E5%AD%98%E6%B5%81%E7%A8%8B%E4%B8%8E%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.pdf)
+1. GEM5 源码阅读：O3 处理器的访存流程与错误处理。[传送门](https://github.com/maokelong/CSDN-maokelong95/blob/master/%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90/GEM5%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%EF%BC%9AO3%20%E5%A4%84%E7%90%86%E5%99%A8%E7%9A%84%E8%AE%BF%E5%AD%98%E6%B5%81%E7%A8%8B%E4%B8%8E%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86.pdf)
